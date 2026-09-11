@@ -1,0 +1,17 @@
+---
+interface Props {
+  left: string;
+  leftAlt: string;
+  right: string;
+  rightAlt: string;
+}
+const { left, leftAlt, right, rightAlt } = Astro.props;
+---
+<section class="grid grid-cols-2">
+  <div class="h-[250px] md:h-[500px]">
+    <img src={left} alt={leftAlt} class="w-full h-full object-cover" loading="lazy" />
+  </div>
+  <div class="h-[250px] md:h-[500px]">
+    <img src={right} alt={rightAlt} class="w-full h-full object-cover" loading="lazy" />
+  </div>
+</section>

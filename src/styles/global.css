@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Creolia';
+  src: url('/Fonts/Creolia-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Creolia';
+  src: url('/Fonts/Creolia-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-navy: #003059;
+  --color-navy-deep: #003c4a;
+  --color-coral: #F57D7D;
+  --color-coral-pale: #FDF1F1;
+  --color-purple: #8785D1;
+  --color-gold: #FFB236;
+  --color-teal: #69C4BD;
+  --color-orange: #f9a21c;
+  --color-mint: #f5fafa;
+  --color-cream-pale: #FEFAED;
+  --color-slate: #eef0f4;
+  --color-ink: #171717;
+
+  --font-family-display: 'Creolia', serif;
+  --font-family-body: 'Outfit', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  color: var(--color-ink);
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-family-display);
+  font-weight: 700;
+}
+
+/* Figma "Body Text/Body 3" — the site's default paragraph style. */
+p {
+  font-size: 16px;
+  line-height: 20px;
+  text-wrap: pretty;
+}
+@media (min-width: 768px) {
+  p {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+/* Same as the `p` rule above, for non-<p> text nodes (spans, list items). */
+.text-body {
+  font-size: 16px;
+  line-height: 20px;
+}
+@media (min-width: 768px) {
+  .text-body {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+/* Figma "Body Text/Body 2 Semibold" — card/subsection titles. */
+.text-card-title {
+  font-family: var(--font-family-body);
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .text-card-title {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}
+
+/* Figma "Button & Disclaimer/Text 1" — form field labels. */
+.text-field-label {
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 400;
+}
+
+/* Figma "Button & Disclaimer/text 2 Light" — fine print / disclaimers. */
+.text-disclaimer {
+  font-family: var(--font-family-body);
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 300;
+}
+
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+
+/* Continuous, seamless logo marquee: track holds the item list twice back
+   to back, so sliding exactly one set-width (-50%) loops without a seam. */
+.insurance-marquee {
+  animation: insurance-marquee 30s linear infinite;
+}
+@keyframes insurance-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Shared button + form-field sizing: every CTA and input shares one
+   font family/size and a hard 45px cap, per design spec. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 45px;
+  max-height: 45px;
+  padding: 0 28px;
+  border-radius: 0.5rem;
+  font-family: var(--font-family-body);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 19px;
+  white-space: nowrap;
+  transition: filter 0.15s, background-color 0.15s, opacity 0.15s;
+}
+@media (max-width: 480px) {
+  .btn {
+    padding: 0 18px;
+  }
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  max-height: 45px;
+  padding: 0 0.875rem;
+  font-family: var(--font-family-body);
+  font-size: 16px;
+  line-height: 1.2;
+}

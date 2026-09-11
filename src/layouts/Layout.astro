@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Mental Health Residential - Mosaic Minds',
+  description = 'Neurodivergent-affirming teen therapy in Chandler, AZ. Specialized mental health care for teens ages 11-17. IOP & PHP options that work around school. Call (888) 648-2661.'
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-TJL5KKGV");
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/Asset/Logo/mosaicminds-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TJL5KKGV"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <slot />
+  </body>
+</html>
+
+<script>
+  // On mobile, the insurance form lives in its own section after the FAQ
+  // (#verify-mobile) instead of the Hero (#verify, desktop only). Redirect
+  // any #verify links to it below the lg breakpoint; desktop is unaffected.
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth >= 1024) return;
+    const link = (e.target as HTMLElement).closest('a[href="#verify"]');
+    if (!link) return;
+    const mobileTarget = document.getElementById('verify-mobile');
+    if (!mobileTarget) return;
+    e.preventDefault();
+    mobileTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Click-to-call tracking: fires on every tel: link sitewide (header,
+  // hero, CTAs, FAQ, footer, etc.) so GTM can trigger a conversion off
+  // event "click_to_call" without per-button wiring.
+  document.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement).closest?.<HTMLAnchorElement>("a[href^='tel:']");
+    if (!link) return;
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: 'click_to_call',
+      phone_number: link.href.replace(/^tel:/, ''),
+      link_text: link.textContent?.trim(),
+      page_path: window.location.pathname,
+    });
+  });
+</script>

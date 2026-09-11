@@ -1,0 +1,100 @@
+---
+const images = [
+  { src: '/Asset/Facility/1-welcome-lobby.webp', alt: 'Healthcare welcome lobby with branded reception desk and visitor seating' },
+  { src: '/Asset/Facility/3-recreation-lounge.webp', alt: 'Recreation lounge with ping pong table, bean bag seating, and gathering space' },
+  { src: '/Asset/Facility/4-classroom-training-space.webp', alt: 'Classroom-style training space with podium, desks, and large windows' },
+  { src: '/Asset/Facility/5-peer-support-space.webp', alt: 'Peer support meeting space with movable chairs and open floor layout' },
+  { src: '/Asset/Facility/2-quiet-reflection-corner.webp', alt: 'Quiet reflection corner with lounge chairs, artwork, and natural light' },
+  { src: '/Asset/Facility/6-sensory-wellness-room.webp', alt: 'Sensory wellness room with immersive lighting, floor cushions, and calming elements' },
+  { src: '/Asset/Facility/7-educational-workshop-room.webp', alt: 'Educational workshop room with instructor station, student desks, and presentation area' },
+  { src: '/Asset/Facility/8-collaborative-learning-room.webp', alt: 'Collaborative learning room with conference table, educational materials, and cabinetry' },
+  { src: '/Asset/Facility/9-exterior-two-story.webp', alt: 'Two-story treatment center exterior with covered entrance and landscaped grounds' },
+  { src: '/Asset/Facility/10-group-discussion-room.webp', alt: 'Group discussion room with circular seating arrangement and geometric wall accents' },
+  { src: '/Asset/Facility/11-community-dining-area.webp', alt: 'Community dining area with round tables, orange chairs, and kitchenette' },
+  { src: '/Asset/Facility/12-skills-building-classroom.webp', alt: 'Skills-building classroom with whiteboard, easel, worktables, and resource displays' },
+];
+
+const checklist = [
+  { icon: '/Asset/Icons/OurCenter/calm-setting.svg', text: 'A calm, predictable setting that reduces sensory overload' },
+  { icon: '/Asset/Icons/OurCenter/small-groups.svg', text: 'Small groups where teens can actually be heard' },
+  { icon: '/Asset/Icons/OurCenter/therapeutic-art.svg', text: 'Therapeutic art and hands-on, engaging activities' },
+  { icon: '/Asset/Icons/OurCenter/practice-social-skills.svg', text: 'Space to practice social skills without pressure' },
+  { icon: '/Asset/Icons/OurCenter/community-belonging.svg', text: 'A community where being different is the norm' },
+];
+---
+<section id="our-center" class="bg-navy text-white py-10 md:py-[70px] scroll-mt-16 px-6 md:px-[37px]">
+  <div class="max-w-[1080px] mx-auto">
+    <h2 class="font-display text-[28px] leading-[32px] md:text-[42px] md:leading-[46px] text-center">A Space Where your Teen Can Breathe</h2>
+    <p class="text-center text-white/85 mt-4">
+      Our space is built for teens who feel overwhelmed by typical environments: calm, predictable, and sensory friendly.
+    </p>
+
+    <div class="grid lg:grid-cols-2 gap-6 mt-10 items-stretch">
+      <div class="order-2 lg:order-1 bg-navy-deep/60 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col justify-center gap-5">
+        {checklist.map(item => (
+          <div class="flex items-center gap-4">
+            <img src={item.icon} alt="" class="shrink-0 w-10 h-10" />
+            <span class="text-body text-white/95">{item.text}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <div class="ourcenter-track flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar rounded-2xl" data-carousel>
+          {images.map(img => (
+            <div class="shrink-0 w-full snap-center rounded-2xl overflow-hidden aspect-[4/3]">
+              <img src={img.src} alt={img.alt} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          ))}
+        </div>
+        <div class="flex justify-center gap-2 mt-4" data-carousel-dots>
+          {images.map((_, i) => (
+            <button
+              type="button"
+              aria-label={`Go to facility photo ${i + 1}`}
+              class="w-2 h-2 rounded-full bg-white/40 data-[active=true]:bg-white transition"
+              data-dot={i}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-10">
+      <a href="tel:8886482661" class="btn bg-orange hover:brightness-95 text-navy">
+        📞 Call Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-carousel]').forEach((track) => {
+    const el = track as HTMLElement;
+    const wrapper = el.parentElement as HTMLElement;
+    const dotsWrap = wrapper.querySelector('[data-carousel-dots]');
+    if (!dotsWrap) return;
+    const dots = Array.from(dotsWrap.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+    const slides = Array.from(el.children) as HTMLElement[];
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        slides[i]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = slides.indexOf(entry.target as HTMLElement);
+            dots.forEach((d, i) => d.dataset.active = String(i === idx));
+          }
+        });
+      },
+      { root: el, threshold: 0.6 }
+    );
+    slides.forEach((s) => observer.observe(s));
+    if (dots[0]) dots[0].dataset.active = 'true';
+  });
+</script>

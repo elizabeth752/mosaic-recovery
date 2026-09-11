@@ -1,0 +1,42 @@
+---
+const features = [
+  { icon: '/Asset/Icons/Features/curriculum-structure.svg', title: 'Curriculum & Structure', text: 'A clear plan and steady progression, not random sessions your teen dreads.' },
+  { icon: '/Asset/Icons/Features/individualized-support.svg', title: 'Individualized Support', text: 'Care that adapts to learning differences, sensory needs, and communication styles.' },
+  { icon: '/Asset/Icons/Features/belonging-social-skills.svg', title: 'Belonging & Social Skills', text: 'A setting where teens connect and practice social skills among peers who get it.' },
+  { icon: '/Asset/Icons/Features/family-support.svg', title: 'Family Support', text: 'We include the people who know your teen best, with strategies that work at home and school.' },
+  { icon: '/Asset/Icons/Features/neurodivergent-affirming.svg', title: 'Neurodivergent Affirming', text: 'We support how your teen’s mind works instead of trying to change it.' },
+  { icon: '/Asset/Icons/Features/school-collaboration.svg', title: 'School Collaboration', text: 'We work alongside IEP and 504 plans so progress carries into the classroom.' },
+  { icon: '/Asset/Icons/Features/dbt-cbt-skills.svg', title: 'DBT & CBT Skills', text: 'Tools for emotional regulation, anxiety, and the thoughts that get in the way.' },
+  { icon: '/Asset/Icons/Features/lgbtq-friendly.svg', title: 'LGBTQ+ Friendly', text: 'Every teen is welcomed and respected for exactly who they are.' },
+];
+---
+<section class="relative bg-white py-10 md:py-[70px] overflow-hidden px-6 md:px-[37px]">
+  <div
+    class="hidden md:block absolute -right-24 bottom-0 w-[520px] h-[420px] bg-coral-pale"
+    style="clip-path: polygon(60% 0%, 100% 35%, 78% 100%, 20% 100%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-[1300px] mx-auto">
+    <h2 class="font-display text-[28px] leading-[32px] md:text-[42px] md:leading-[46px] text-navy">Why Parents Choose mosaic Minds</h2>
+    <p class="mt-4 max-w-3xl text-ink/75">
+      We&rsquo;re not a one-size-fits-all program. Mosaic Minds combines real structure with care tailored to your teen&rsquo;s learning differences, sensory needs, and communication style — and we make belonging part of the work, not an afterthought.
+    </p>
+
+    <div class="mt-10 flex md:grid md:grid-cols-4 gap-6 md:gap-x-6 md:gap-y-12 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-6 px-6 md:mx-0 md:px-0">
+      {features.map(f => (
+        <div class="shrink-0 w-[78%] sm:w-[45%] md:w-auto snap-start">
+          <img src={f.icon} alt="" class="w-[65px] h-[65px]" />
+          <h3 class="mt-4 text-card-title text-ink">{f.title}</h3>
+          <p class="mt-1.5 text-ink/70">{f.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex justify-center mt-10">
+      <a href="tel:8886482661" class="btn border border-black/20 hover:bg-black/5 text-ink">
+        Speak With Our Team
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+const conditions = [
+  { icon: '/Asset/Icons/Conditions/teen-anxiety.svg', title: 'Teen Anxiety', text: 'When worry, overwhelm, or panic starts running the day.' },
+  { icon: '/Asset/Icons/Conditions/teen-depression.svg', title: 'Teen Depression', text: 'Low mood, withdrawal, or loss of interest that’s hard to shake alone.' },
+  { icon: '/Asset/Icons/Conditions/adhd.svg', title: 'ADHD', text: 'Support for focus, motivation, and the daily executive-function struggles that wear teens down.' },
+  { icon: '/Asset/Icons/Conditions/autism.svg', title: 'Autism', text: 'Affirming therapy that respects how autistic teens experience and navigate the world.' },
+  { icon: '/Asset/Icons/Conditions/sensory-processing.svg', title: 'Sensory Processing', text: 'Help for teens who feel easily overwhelmed by their environment.' },
+  { icon: '/Asset/Icons/Conditions/school-refusal.svg', title: 'School Refusal', text: 'When getting to (or through) school has become too much.' },
+  { icon: '/Asset/Icons/Conditions/504-support.svg', title: 'IEP/504 Support', text: 'Care that works alongside your teen’s school plan.' },
+];
+---
+<section id="conditions-we-treat" class="bg-navy text-white py-10 md:py-[70px] scroll-mt-16 px-6 md:px-[37px]">
+  <div class="max-w-[1300px] mx-auto">
+    <h2 class="font-display text-[28px] leading-[32px] md:text-[42px] md:leading-[46px] text-center">Support for What Your Teen Is Facing</h2>
+    <p class="mt-4 text-center text-white/80 max-w-2xl mx-auto">
+      Whether your teen is struggling with their mental health, their environment, or both, our team meets them where they are, with care designed for how their mind works.
+    </p>
+    <p class="mt-8 text-center font-semibold">Common Challenges:</p>
+
+    <div class="relative mt-6 max-w-[1060px] mx-auto">
+      <div class="conditions-track flex gap-5 overflow-x-auto snap-x snap-mandatory no-scrollbar" data-conditions-track>
+        {conditions.map(c => (
+          <div class="shrink-0 w-[300px] md:w-[485px] snap-start bg-white text-ink rounded-2xl p-6 text-center">
+            <img src={c.icon} alt="" class="w-14 h-14 mx-auto" />
+            <h3 class="mt-4 text-card-title text-coral">{c.title}</h3>
+            <p class="mt-2 text-ink/75">{c.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="flex justify-center gap-4 mt-6">
+        <button type="button" data-conditions-prev aria-label="Previous challenge" class="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition">←</button>
+        <button type="button" data-conditions-next aria-label="Next challenge" class="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition">→</button>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-10">
+      <a href="tel:8886482661" class="btn bg-orange hover:brightness-95 text-navy">
+        📞 We&rsquo;re Here for You
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-conditions-track]').forEach((trackEl) => {
+    const track = trackEl as HTMLElement;
+    const card = track.firstElementChild as HTMLElement | null;
+    const step = card ? card.getBoundingClientRect().width + 20 : 280;
+    const prev = track.parentElement?.querySelector('[data-conditions-prev]');
+    const next = track.parentElement?.querySelector('[data-conditions-next]');
+    prev?.addEventListener('click', () => track.scrollBy({ left: -step, behavior: 'smooth' }));
+    next?.addEventListener('click', () => track.scrollBy({ left: step, behavior: 'smooth' }));
+  });
+</script>

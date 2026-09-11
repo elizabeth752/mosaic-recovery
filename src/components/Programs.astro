@@ -1,0 +1,59 @@
+---
+const programs = [
+  {
+    tag: 'Partial Hospitalization Program (PHP)',
+    img: '/Asset/Program/php.webp',
+    alt: 'Group therapy session with a clinician and four teens',
+    text: 'Our most supportive level of day care. Teens attend full days of structured therapy, skills groups, and individualized support, then go home each evening. Ideal when your teen needs consistent, intensive support to get steady again.',
+  },
+  {
+    tag: 'Intensive Outpatient Program (IOP)',
+    img: '/Asset/Program/iop.webp',
+    alt: 'Teen studying at a desk with a laptop',
+    text: 'A structured step for teens who need more than weekly therapy but are managing daily life. Fewer hours than PHP, with the same focus on emotional regulation, social skills, and school stress — scheduled around the school day.',
+  },
+  {
+    tag: 'Summer Program',
+    img: '/Asset/Program/summer.webp',
+    alt: 'Group of teens outdoors putting their hands together',
+    text: 'Structured summer support that keeps teens connected, building skills and community during the months when routine disappears and struggles often resurface.',
+  },
+];
+---
+<section id="programs" class="relative bg-white py-10 md:py-[70px] overflow-hidden scroll-mt-16 px-6 md:px-[37px]">
+  <div
+    class="hidden md:block absolute -left-16 bottom-10 w-[420px] h-[340px] bg-cream-pale"
+    style="clip-path: polygon(0% 100%, 0% 20%, 55% 0%, 100% 45%, 70% 100%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-[1080px] mx-auto">
+    <h2 class="font-display text-[28px] leading-[32px] md:text-[42px] md:leading-[46px] text-navy text-center">The Right Level of Support for Where Your Teen Is</h2>
+    <p class="mt-4 text-center text-ink/75 max-w-2xl mx-auto">
+      When once-a-week therapy isn&rsquo;t enough but inpatient care is far more than your teen needs, our day programs fill the gap with structure, skills, and community.
+    </p>
+
+    <div class="mt-12 space-y-10">
+      {programs.map((p, i) => (
+        <div>
+          <div class:list={["grid gap-6 items-center", i === 1 ? "md:grid-cols-[1fr_310px]" : "md:grid-cols-[310px_1fr]"]}>
+            <div class:list={["rounded-2xl overflow-hidden aspect-[4/3] md:aspect-[31/16]", i === 1 && "md:order-2"]}>
+              <img src={p.img} alt={p.alt} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class:list={i === 1 && "md:order-1"}>
+              <h3 class="text-coral text-card-title">{p.tag}</h3>
+              <p class="mt-2 text-ink/80">{p.text}</p>
+            </div>
+          </div>
+          {i < programs.length - 1 && <hr class="mt-10 border-dashed border-gold" />}
+        </div>
+      ))}
+    </div>
+
+    <div class="flex justify-center mt-12">
+      <a href="#conditions-we-treat" class="btn border border-black/20 hover:bg-black/5 text-ink">
+        Find Your Support Level
+      </a>
+    </div>
+  </div>
+</section>

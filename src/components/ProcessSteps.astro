@@ -1,0 +1,33 @@
+---
+const steps = [
+  { icon: '/Asset/Icons/Process/step-1-purple.svg', title: 'Making The First Call', text: 'A short call to share your concerns, your teen’s age, scheduling needs, and insurance, followed by a brief safety screening.' },
+  { icon: '/Asset/Icons/Process/step-2-gold.svg', title: 'Free Consultation', text: 'A free 15–30 minute call to talk through your concerns, school needs (IEP/504), and which level of support fits — IOP, PHP, or outpatient.' },
+  { icon: '/Asset/Icons/Process/step-3-teal.svg', title: 'Assessment', text: 'A thoughtful assessment helps clarify exactly what your teen needs and what the next step looks like.' },
+  { icon: '/Asset/Icons/Process/step-4-coral.svg', title: 'Program Selection', text: 'We recommend the right program and walk you through what support will look like moving forward.' },
+];
+---
+<section class="bg-mint py-10 md:py-[70px] px-6 md:px-[37px]">
+  <div class="max-w-[1080px] mx-auto">
+    <h2 class="font-display text-[28px] leading-[32px] md:text-[42px] md:leading-[46px] text-navy text-center">A Clear, Supportive Next Step</h2>
+    <p class="mt-4 text-center text-ink/75 max-w-2xl mx-auto">
+      The process is designed to reduce overwhelm and support informed decisions.
+    </p>
+
+    <div class="mt-12 grid lg:grid-cols-[420px_1fr] gap-10 items-stretch">
+      <div class="rounded-2xl overflow-hidden h-full">
+        <img src="/Asset/Facility/1-welcome-lobby.webp" alt="Mosaic Minds reception lobby" class="w-full h-full object-cover" />
+      </div>
+      <div class="space-y-8">
+        {steps.map(s => (
+          <div class="flex gap-4">
+            <img src={s.icon} alt="" class="shrink-0 w-[45px] h-10" />
+            <div>
+              <h3 class="text-card-title text-navy">{s.title}</h3>
+              <p class="mt-1 text-ink/75">{s.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

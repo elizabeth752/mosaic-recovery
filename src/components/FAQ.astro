@@ -1,0 +1,66 @@
+---
+const faqs = [
+  {
+    q: 'What ages do you work with?',
+    a: 'We specialize in teens ages 11–17. Our programs, environment, and clinical approach are built specifically for adolescents, not adapted from adult care.',
+  },
+  {
+    q: 'What does a typical day in the program look like?',
+    a: 'Days follow a steady, predictable structure: skills groups, individual support, therapeutic activities like art, and time to connect with peers. We use DBT-based emotional regulation skills and CBT-based cognitive tools, all in a setting designed to feel manageable rather than overwhelming.',
+  },
+  {
+    q: 'What makes Mosaic Mind "neurodivergent-affirming"?',
+    a: 'It means we support how your teen’s brain works instead of trying to change it. We accommodate sensory needs, learning differences, and communication styles, and we treat traits like ADHD or autism as part of who your teen is, not problems to erase.',
+  },
+  {
+    q: 'Will treatment interfere with my kid´s school?',
+    a: 'We work around the school day and collaborate with IEP and 504 plans so progress carries into the classroom. Our IOP is designed to fit alongside school, and we help families navigate school refusal and academic stress directly.',
+  },
+  {
+    q: 'How will I be involved as a parent?',
+    a: 'Closely, and intentionally. Family support is one of our core pillars. We include the people who know your teen best, with strategies and communication that connect what’s happening in our program to home and school.',
+  },
+  {
+    q: 'How do we get started?',
+    a: 'It starts with a free 15–30 minute consultation, no obligation. We’ll listen to your concerns, talk through options, and only recommend a program if it’s genuinely the right fit. We’ll also verify your insurance benefits before anything moves forward.',
+  },
+];
+---
+<section class="bg-mint py-10 md:py-[70px] px-6 md:px-[37px]">
+  <div class="max-w-[860px] mx-auto">
+    <h2 class="font-display text-[28px] leading-[32px] md:text-[42px] md:leading-[46px] text-navy text-center">Questions? We&rsquo;re Here to Answer</h2>
+
+    <div class="mt-10 space-y-3" data-accordion>
+      {faqs.map((f, i) => (
+        <details data-accordion-item open={i === 0} class="rounded-xl overflow-hidden group">
+          <summary class="flex items-center justify-between gap-4 px-5 py-4 text-card-title text-white bg-navy group-open:bg-purple transition-colors">
+            <span>{f.q}</span>
+            <span class="shrink-0 text-xl leading-none">{i === 0 ? '−' : '+'}</span>
+          </summary>
+          <div class="bg-purple px-5 pb-5">
+            <p class="bg-white rounded-lg p-4 text-ink/85">{f.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <p class="mt-10 text-center font-display text-xl md:text-2xl text-navy">
+      Still Have Questions?<br />Give Us a Call
+    </p>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll<HTMLDetailsElement>('[data-accordion-item]');
+  items.forEach((item) => {
+    item.addEventListener('toggle', () => {
+      const icon = item.querySelector('summary span:last-child');
+      if (icon) icon.textContent = item.open ? '−' : '+';
+      if (item.open) {
+        items.forEach((other) => {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+</script>

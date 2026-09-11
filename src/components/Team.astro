@@ -1,0 +1,26 @@
+---
+const placeholders = new Array(4).fill(null);
+---
+<section class="bg-mint py-10 md:py-[70px] px-6 md:px-[37px]">
+  <div class="max-w-[1300px] mx-auto">
+    <h2 class="font-display text-[28px] leading-[32px] md:text-[42px] md:leading-[46px] text-navy text-center">Specialists Who Speak Your Teen&rsquo;s Language</h2>
+    <p class="mt-4 text-center text-ink/75 max-w-3xl mx-auto">
+      Our clinicians and program staff bring real expertise in child development, neurodiversity, and teen mental health, along with genuine passion for helping young people understand their strengths and build a confident sense of self.
+    </p>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {placeholders.map(() => (
+        <div>
+          <div class="aspect-[3/4] rounded-2xl overflow-hidden">
+            <img src="/Asset/Team/placeholder-checkerboard.webp" alt="" class="w-full h-full object-cover" />
+          </div>
+          <h3 class="mt-4 text-card-title text-ink">Lorem ipsum dolor sit</h3>
+          <p class="text-navy text-field-label font-medium">Lorem ipsum dolor sit amet consectetur.</p>
+          <p class="mt-2 text-ink/70">
+            Lorem ipsum dolor sit amet consectetur. Erat lobortis diam nisl consectetur. Id nisi quam tempor ut risus turpis cursus odio. Semper dictum vitae aliquam nulla posuere donec
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopBar from '../components/TopBar.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import SubNav from '../components/SubNav.astro';
+import OurCenter from '../components/OurCenter.astro';
+import WhyChoose from '../components/WhyChoose.astro';
+import FigureOutAlone from '../components/FigureOutAlone.astro';
+import Programs from '../components/Programs.astro';
+import Conditions from '../components/Conditions.astro';
+// import Team from '../components/Team.astro'; // re-enable once real clinician content is ready
+import Insurance from '../components/Insurance.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import LocationSection from '../components/LocationSection.astro';
+import FAQ from '../components/FAQ.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import InsuranceForm from '../components/InsuranceForm.astro';
+import ImageSplit from '../components/ImageSplit.astro';
+---
+<Layout>
+  <TopBar />
+  <Header />
+  <Hero />
+  <SubNav />
+  <OurCenter />
+  <WhyChoose />
+  <FigureOutAlone />
+  <ImageSplit
+    left="/Asset/Facility/7-educational-workshop-room.webp"
+    leftAlt="Educational workshop room with instructor station, student desks, and presentation area"
+    right="/Asset/Facility/2-quiet-reflection-corner.webp"
+    rightAlt="Quiet reflection corner with lounge chairs, artwork, and natural light"
+  />
+  <Programs />
+  <Conditions />
+  <ImageSplit
+    left="/Asset/Facility/6-sensory-wellness-room.webp"
+    leftAlt="Sensory wellness room with immersive lighting, floor cushions, and calming elements"
+    right="/Asset/Facility/11-community-dining-area.webp"
+    rightAlt="Community dining area with round tables, orange chairs, and kitchenette"
+  />
+  {/* Team hidden until real clinician bios/photos replace the lorem-ipsum placeholder content */}
+  <Insurance />
+  <ProcessSteps />
+  <LocationSection />
+  <FAQ />
+
+  <!-- Mobile-only: insurance verify form (desktop version lives in the Hero section) -->
+  <section class="lg:hidden bg-purple py-12 px-6">
+    <div class="max-w-lg mx-auto">
+      <InsuranceForm id="verify-mobile" variant="navy" />
+    </div>
+  </section>
+
+  <FinalCTA />
+  <Footer />
+</Layout>

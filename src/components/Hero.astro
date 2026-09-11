@@ -1,0 +1,59 @@
+---
+import InsuranceForm from './InsuranceForm.astro';
+
+const bullets = [
+  { color: 'border-l-coral', text: 'Specialized care for ages 11–17' },
+  { color: 'border-l-purple', text: 'IOP & PHP options that work around school' },
+  { color: 'border-l-teal', text: 'Neurodivergent-affirming, LGBTQ+ friendly approach' },
+];
+---
+<section class="relative overflow-hidden px-6 md:px-[37px]">
+  <img
+    src="/Asset/Hero/hero-facility-exterior.webp"
+    alt="Modern healthcare facility entrance with stone columns and desert landscaping"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+  <div class="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/10"></div>
+
+  <div class="relative max-w-[1300px] mx-auto py-10 md:py-[70px]">
+    <div class="grid lg:grid-cols-[1fr_460px] gap-10 items-start">
+      <div class="max-w-[750px]">
+        <h1 class="font-display font-semibold text-[32px] leading-[38px] md:text-[54px] md:leading-[66px] text-black">
+          Where Every Mind Belongs: Specialized Mental Health Care for Teens
+        </h1>
+
+        <div class="flex items-center gap-1.5 mt-4 text-navy-deep font-semibold text-[20px] leading-normal tracking-[2px]">
+          <span class="text-gold" aria-hidden="true">★★★★★</span>
+          5/5 on Google reviews
+        </div>
+
+        <p class="mt-4 text-black/80">
+          Some teens are carrying more than they let on, even when they seem &ldquo;fine&rdquo; on the outside. If your child is masking, melting down after school, falling behind, or struggling to find where they fit, you don&rsquo;t need another program that tries to make them someone they&rsquo;re not.
+        </p>
+        <p class="mt-4 text-black/80">
+          Mosaic Minds offers structured, understanding support built around how your teen actually thinks, learns, and feels.
+        </p>
+
+        <ul class="mt-5 space-y-3">
+          {bullets.map(b => (
+            <li class="flex items-center gap-3">
+              <span class={`inline-block w-0 h-0 border-y-[9px] border-y-transparent border-l-[14px] ${b.color}`}></span>
+              <span class="text-body text-black/85">{b.text}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-6 flex flex-wrap items-center gap-4">
+          <span class="btn border border-black/15 bg-white text-ink">
+            💳 Payment Plans Available
+          </span>
+          <img src="/Asset/Badges/lgbtq-friendly-facility.svg" alt="LGBTQ+ Friendly Facility" class="h-14 w-14" />
+        </div>
+      </div>
+
+      <div class="hidden lg:block">
+        <InsuranceForm id="verify" />
+      </div>
+    </div>
+  </div>
+</section>
