@@ -121,8 +121,8 @@ details > summary::-webkit-details-marker { display: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Shared button + form-field sizing: every CTA and input shares one
-   font family/size and a hard 45px cap, per design spec. */
+/* Shared button + form-field sizing: every CTA is capped at 45px and
+   every input/select at 40px, per design spec. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -149,8 +149,8 @@ details > summary::-webkit-details-marker { display: none; }
   display: flex;
   align-items: center;
   width: 100%;
-  height: 45px;
-  max-height: 45px;
+  height: 40px;
+  max-height: 40px;
   padding: 0 0.875rem;
   font-family: var(--font-family-body);
   font-size: 16px;
